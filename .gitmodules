@@ -1,0 +1,18 @@
+[submodule "libs/rpui"]
+	path = libs/rpui
+	url = https://github.com/cnwzhjs/rpui.git
+[submodule "onemake"]
+	path = onemake
+	url = https://github.com/cnwzhjs/onemake.git
+[submodule "libs/rpusbdisp"]
+	path = libs/rpusbdisp
+	url = https://github.com/robopeak/rpusbdisp.git
+[submodule "libs/libfreetype2_wrap"]
+	path = libs/libfreetype2_wrap
+	url = https://github.com/cnwzhjs/libfreetype2_wrap
+[submodule "libs/libusbx_wrap"]
+	path = libs/libusbx_wrap
+	url = https://github.com/cnwzhjs/libusbx_wrap
+[submodule "libs/rpinfra"]
+	path = libs/rpinfra
+	url = https://github.com/cnwzhjs/rpinfra.git

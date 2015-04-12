@@ -1,0 +1,47 @@
+{
+    "rpinfra": {
+        "type": "library",
+        "directory": "libs/rpinfra"
+    },
+
+    "rpusbdisp_drv": {
+        "type": "library",
+        "directory": "libs/rpusbdisp/drivers/usermode-sdk/rpusbdisp-drv",
+        "depends": [
+            "libusbx_wrap"
+        ]
+    },
+
+    "libusbx_wrap": {
+        "type": "library",
+        "directory": "libs/libusbx_wrap",
+        "depends": [
+            "rpinfra"
+        ]
+    },
+
+    "libfreetype2_wrap": {
+        "type": "library",
+        "directory": "libs/libfreetype2_wrap",
+        "depends": [
+            "rpinfra"
+        ],
+        "extra_include_dirs?target_platform=linux": [
+            "/usr/include/freetype2"
+        ]
+    },
+
+    "rpui": {
+        "type": "library",
+        "directory": "libs/rpui",
+        "depends": [
+            "rpusbdisp_drv",
+            "libfreetype2_wrap"
+        ],
+        "extra_include_dirs?target_platform=linux": [
+            "/usr/include/libpng16",
+            "${SRC_DIR}/../../3rdparty/libpng-1.6.17"
+        ]
+    }
+}
+
