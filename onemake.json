@@ -42,6 +42,24 @@
             "/usr/include/libpng16",
             "${SRC_DIR}/../../3rdparty/libpng-1.6.17"
         ]
+    },
+
+    "rpairmon": {
+        "type": "application",
+        "directory": "apps/rpairmon",
+        "depends": [
+            "rpui"
+        ],
+        "external_depends": [
+            "jsoncpp",
+            "png16",
+            "freetype",
+            "curl",
+            "usb-1.0"
+        ],
+        "extra_include_dirs?target_platform=linux": [
+            "/usr/include/jsoncpp"
+        ]
     }
 }
 
