@@ -24,7 +24,7 @@ using namespace rp::util;
 using namespace rp::ui;
 using namespace rp;
 
-#define APPLICATION_RES_ROOT "/usr/share/tony_home_portal/res/"
+#define APPLICATION_RES_ROOT "res/"
 #define APPLICATION_DEFAULT_FONT "Square 721 BT"
 //#define APPLICATION_DEFAULT_FONT "eurostile"
 //#define APPLICATION_DEFAULT_FONT "Helvetica LT Light"
