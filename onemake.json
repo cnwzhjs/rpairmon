@@ -26,8 +26,8 @@
         "depends": [
             "rpinfra"
         ],
-        "extra_include_dirs?target_platform=linux": [
-            "/usr/include/freetype2"
+        "extra_include_dirs": [
+            "${OUTPUT_ROOT}/include/freetype2"
         ]
     },
 
@@ -38,28 +38,34 @@
             "rpusbdisp_drv",
             "libfreetype2_wrap"
         ],
-        "extra_include_dirs?target_platform=linux": [
-            "/usr/include/libpng16",
+        "extra_include_dirs": [
             "${SRC_DIR}/../../3rdparty/libpng-1.6.17"
         ]
+    },
+
+    "jsoncpp": {
+        "type": "library",
+        "directory": "3rdparty/jsoncpp",
+        "output_headers": true
     },
 
     "rpairmon": {
         "type": "application",
         "directory": "apps/rpairmon",
         "depends": [
-            "rpui"
+            "rpui",
+            "jsoncpp"
         ],
         "external_depends": [
-            "jsoncpp",
             "png16",
             "freetype",
             "curl",
-            "usb-1.0"
+            "usb-1.0",
+            "z"
         ],
-        "extra_include_dirs?target_platform=linux": [
-            "/usr/include/jsoncpp"
-        ]
+        "env?target_arch=armv7hf": {
+            "ldflags": ["-s", "-static"]
+        }
     }
 }
 

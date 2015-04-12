@@ -16,6 +16,6 @@
 [submodule "libs/rpinfra"]
 	path = libs/rpinfra
 	url = https://github.com/cnwzhjs/rpinfra.git
-[submodule "3rdparty/freetype2"]
-	path = 3rdparty/freetype2
-	url = http://git.sv.nongnu.org/r/freetype/freetype2.git
+[submodule "3rdparty/jsoncpp"]
+	path = 3rdparty/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp
