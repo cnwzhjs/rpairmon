@@ -69,7 +69,7 @@ else
     mkdir -p ${OBJECT_ROOT}/freetype2
     pushd ${OBJECT_ROOT}/freetype2
 
-    ${PROJECT_ROOT}/3rdparty/freetype-2.5.5/configure --prefix=$PROJECT_ROOT/$OUTPUT_ROOT $CROSS_FLAGS || exit 1
+    ${PROJECT_ROOT}/3rdparty/freetype-2.5.5/configure --prefix=$PROJECT_ROOT/$OUTPUT_ROOT --with-png=no --with-harfbuzz=no $CROSS_FLAGS || exit 1
     make || exit 1
     make install || exit 1
 

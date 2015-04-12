@@ -1,3 +1,3 @@
 #! /bin/sh
 
-sudo apt-get install gcc g++ make
+sudo apt-get install gcc g++ make realpath
