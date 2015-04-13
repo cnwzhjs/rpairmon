@@ -56,15 +56,11 @@ static void setupDarkScheme() {
     // Font
     style->setString("Font.DefaultFontFace", APPLICATION_DEFAULT_FONT);
     style->setString("Font.FontDir", APPLICATION_RES_ROOT "fonts");
+    style->setString("Application.WeatherFontFace", "weathericons-regular-webfont");
     
     // Application
     style->setColor("Application.BackgroundColor", colors::black);
     style->setColor("Application.TextColor", Color(0xdd, 0xdd, 0xff, 0xff));
-
-    style->setString("Application.WeatherIconMap",
-        "        " "        " /* 0..7   8..15*/
-        "    CZ  " "d 3 aaA6" /*16..23 24..31*/
-        "122     " "        " /*32..39 40..47*/);
     
     style->setInteger("Application.StatusBarHeight", 54);
     style->setFloat("Application.StatusBarFontSize", 24);
@@ -81,53 +77,15 @@ static void setupStyle() {
     setupDarkScheme();
 }
 
-#if 0
-static void updateTime(std::shared_ptr<Label> label)
-{
-    auto now = std::chrono::system_clock::now();
-    std::time_t nowTime = std::chrono::system_clock::to_time_t(now);
-
-    label->setText(std::ctime(&nowTime));
-}
-#endif
-
 int main(void) {
     setupStyle();
     
     auto manager = UiManager::defaultManager();
 
-#if 0
-    auto style = StyleManager::defaultManager();
-
-    std::shared_ptr<Scene> scene(new Scene("Tony Home Portal"));
-
-    int sceneWidth = style->getInteger("Application.SceneWidth", 320);
-    int sceneHeight = style->getInteger("Application.SceneHeight", 240);
-    auto bgColor = style->getColor("Application.BackgroundColor");
-    std::string defaultFont = style->getString("Font.DefaultFontFace", "Verdana");
-
-    scene->setSize(Size(sceneWidth, sceneHeight));
-    scene->setBackgroundColor(bgColor);
-
-    std::shared_ptr<Label> label(new Label());
-    label->setFrame(ui::Rectangle(8, 0, sceneWidth - 16, 24));
-    label->setFontFace(defaultFont);
-    label->setFontColor(colors::white);
-    label->setFontSize(9);
-    label->setHorizontalAlignment(TextAlignmentNear);
-    label->setVerticalAlignment(TextAlignmentCenter);
-    
-    scene->appendChild(label);
-
-    manager->setScene(scene);
-    
-    manager->setOnUpdate(std::bind(updateTime, label));
-#else
     auto application = tony::home_portal::ui::Application::defaultApplication();
     application->start();
 
     manager->setScene(application->getScene());
-#endif
 
     return manager->run();
 }

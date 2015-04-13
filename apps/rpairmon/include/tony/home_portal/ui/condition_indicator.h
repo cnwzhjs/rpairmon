@@ -26,9 +26,6 @@ namespace tony { namespace home_portal { namespace ui {
         std::shared_ptr<rp::ui::Label> conditionImage_;
         std::shared_ptr<rp::ui::Label> tempLabel_;
         std::shared_ptr<rp::ui::Label> humidityLabel_;
-
-    private:
-        std::string weatherIconMap_;
     };
 
 } } }

@@ -2,6 +2,7 @@
 #include <rp/ui/label.h>
 #include <rp/ui/color.h>
 #include <rp/ui/style_manager.h>
+#include <rp/airmon/utils/weather_glyph.h>
 
 #ifdef _WIN32
 #   define snprintf sprintf_s
@@ -31,13 +32,9 @@ namespace tony { namespace home_portal { namespace ui {
 
         auto meterFontFace = style->getString("Application.MeterFontFace", defaultFont);
         auto meterLabelFontSize = style->getFloat("Application.MeterLabelFontSize", 9);
-        auto conditionImageFontSize = style->getFloat("Application.ConditionImageFontSize", 36);
+        auto conditionImageFontSize = style->getFloat("Application.ConditionImageFontSize", 24);
         auto meterUnitFontSize = style->getFloat("Application.MeterUnitFontSize", 9);
         auto weatherFontFace = style->getString("Application.WeatherFontFace", "artill_clean_icons");
-        weatherIconMap_ = style->getString("Application.WeatherIconMap",
-            "        " "        " /* 0..7   8..15*/
-            "    CZ  " "d   aaA6" /*16..23 24..31*/
-            "12      " "        " /*32..39 40..47*/);
 
         presureLabel_->setFontFace(meterFontFace);
         presureLabel_->setFontColor(colors::silver);
@@ -173,35 +170,35 @@ namespace tony { namespace home_portal { namespace ui {
 
         if (dir > (360 - 22.5) || dir < 22.5)
         {
-            windDirectionImage_->setText("¿");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-north"));
         }
         else if (dir < (45 + 22.5))
         {
-            windDirectionImage_->setText("\"");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-north-east"));
         }
         else if (dir < (90 + 22.5))
         {
-            windDirectionImage_->setText("'");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-east"));
         }
         else if (dir < (135 + 22.5))
         {
-            windDirectionImage_->setText(";");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-south-east"));
         }
         else if (dir < (180 + 22.5))
         {
-            windDirectionImage_->setText("#");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-south"));
         }
         else if (dir < (225 + 22.5))
         {
-            windDirectionImage_->setText(".");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-south-west"));
         }
         else if (dir < (270 + 22.5))
         {
-            windDirectionImage_->setText("·");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-west"));
         }
         else
         {
-            windDirectionImage_->setText("?");
+            windDirectionImage_->setText(rp::airmon::utils::lookup_glyph("wind-north-west"));
         }
     }
 
@@ -247,7 +244,7 @@ namespace tony { namespace home_portal { namespace ui {
             else
             {
                 elems.day->setText(v[i].day);
-                elems.conditionImage->setText(weatherIconMap_.substr(v[i].code, 1));
+                elems.conditionImage->setText(rp::airmon::utils::lookup_glyph(rp::airmon::utils::lookup_symbol(v[i].code)));
                 elems.conditionText->setText(summary(v[i].codeText, 10));
                 char buffer[256];
                 snprintf(buffer, sizeof(buffer), "%.0f~%.0f", v[i].low, v[i].high);

@@ -9,6 +9,7 @@
 #include <rp/ui/scene.h>
 #include <rp/ui/style_manager.h>
 #include <rp/ui/ui_manager.h>
+#include <rp/airmon/utils/weather_glyph.h>
 #include <thread>
 #include <math.h>
 
@@ -45,24 +46,24 @@ namespace tony { namespace home_portal { namespace ui {
         scene_->setFrame(frame);
         scene_->setBackgroundColor(bgColor);
 
-        temperatureMeter_->setLabel("‘");
+        temperatureMeter_->setLabel(rp::airmon::utils::lookup_glyph("thermometer"));
         temperatureMeter_->setValue("N/A");
         temperatureMeter_->setUnit("");
         temperatureMeter_->setFrame(rp::ui::Rectangle(0, statusBar_->getHeight(), sceneWidth / 3, (sceneHeight - statusBar_->getHeight())*3/8 - 8));
         temperatureMeter_->setHorizontalAlignment(TextAlignmentNear);
         temperatureMeter_->setLabelFontFace(weatherFontFace);
         temperatureMeter_->setUnitFontFace(weatherFontFace);
-        temperatureMeter_->setLabelFontSize(24);
+        temperatureMeter_->setLabelFontSize(18);
         temperatureMeter_->setUnitFontSize(24);
         scene_->appendChild(temperatureMeter_);
 
-        humidityMeter_->setLabel("5");
+        humidityMeter_->setLabel(rp::airmon::utils::lookup_glyph("sprinkles"));
         humidityMeter_->setValue("N/A");
         humidityMeter_->setUnit("");
         humidityMeter_->setFrame(rp::ui::Rectangle(temperatureMeter_->getWidth(), statusBar_->getHeight(), sceneWidth / 3, temperatureMeter_->getHeight()));
         humidityMeter_->setHorizontalAlignment(TextAlignmentNear);
         humidityMeter_->setLabelFontFace(weatherFontFace);
-        humidityMeter_->setLabelFontSize(24);
+        humidityMeter_->setLabelFontSize(18);
         scene_->appendChild(humidityMeter_);
 
         conditionIndicator_->setFrame(rp::ui::Rectangle(humidityMeter_->getX() + humidityMeter_->getWidth(), statusBar_->getHeight(), sceneWidth / 3, humidityMeter_->getHeight()));

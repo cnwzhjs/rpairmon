@@ -2,6 +2,7 @@
 #include <rp/ui/label.h>
 #include <rp/ui/color.h>
 #include <rp/ui/style_manager.h>
+#include <rp/airmon/utils/weather_glyph.h>
 
 #ifdef _WIN32
 #   define snprintf sprintf_s
@@ -24,13 +25,9 @@ namespace tony { namespace home_portal { namespace ui {
 
         auto meterFontFace = style->getString("Application.MeterFontFace", defaultFont);
         auto meterLabelFontSize = style->getFloat("Application.MeterLabelFontSize", 9);
-        auto conditionImageFontSize = style->getFloat("Application.ConditionImageFontSize", 36);
+        auto conditionImageFontSize = style->getFloat("Application.ConditionImageFontSize", 24);
         auto meterUnitFontSize = style->getFloat("Application.MeterUnitFontSize", 9);
         auto weatherFontFace = style->getString("Application.WeatherFontFace", "artill_clean_icons");
-        weatherIconMap_ = style->getString("Application.WeatherIconMap",
-            "        " "        " /* 0..7   8..15*/
-            "    CZ  " "d   aaA6" /*16..23 24..31*/
-            "12      " "        " /*32..39 40..47*/);
 
         conditionLabel_->setFontFace(meterFontFace);
         conditionLabel_->setFontColor(colors::silver);
@@ -74,7 +71,7 @@ namespace tony { namespace home_portal { namespace ui {
     {
         locationCondition_ = cond;
 
-        conditionImage_->setText(weatherIconMap_.substr(cond.code, 1));
+        conditionImage_->setText(rp::airmon::utils::lookup_glyph(rp::airmon::utils::lookup_symbol(cond.code)));
 
         char buffer[256];
         snprintf(buffer, sizeof(buffer), "%.0f", cond.temperature);

@@ -52,9 +52,6 @@ namespace tony { namespace home_portal { namespace ui {
         std::shared_ptr<rp::ui::Label> windDirectionImage_;
         std::shared_ptr<rp::ui::Label> windSpeed_;
         std::shared_ptr<rp::ui::Label> windUnit_;
-
-    private:
-        std::string weatherIconMap_;
     };
 
 } } }
