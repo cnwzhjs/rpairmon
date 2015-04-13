@@ -65,6 +65,12 @@
         ],
         "env?target_arch=armv7hf": {
             "ldflags": ["-s", "-static"]
+        },
+        "env?target_arch=mips": {
+            "ldflags": ["-s"]
+        },
+        "env?target_arch=mipsel": {
+            "ldflags": ["-s", "-static"]
         }
     }
 }
